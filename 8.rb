@@ -1,8 +1,3 @@
-a = %w[a b c d e f g]
-
-a[2, 2] #[index, length]
-# .size .sum .reverse
-
 class BirdCount
   def self.last_week
     [0, 2, 5, 3, 7, 8, 4]

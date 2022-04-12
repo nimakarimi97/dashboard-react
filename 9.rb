@@ -16,9 +16,8 @@ class BoutiqueInventory
   end
 
   def stock_for_item(name)
-    # @items.select { |item| item[:name] == name }
     for item in @items
-      return item[:quantity_by_size] if item[:name] == name
+      item[:quantity_by_size] if item[:name] == name
     end
 
     # * from community
