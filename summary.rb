@@ -34,6 +34,8 @@ puts lucky_numbers
 # puts "\n\n"
 # puts lucky_numbers.length
 
+puts [1, 2, 3].select(&:even?)
+
 #? strings ----------------------------------------------------------------
 location = 'World'
 # And double quotes when interpolated
@@ -94,3 +96,37 @@ puts g.website
 # Outside the class
 g.website = 'www.practice.geeksforgeeks.org'
 puts g.website
+
+#? Arrays ----------------------------------------------------------------
+
+fibonacci = [0, 1, 1, 2, 3, 5, 8, 13]
+
+fibonacci.count { |number| number == 1 } #=> 2
+fibonacci.any? { |number| number == 6 } #=> false
+fibonacci.select { |number| number.odd? } #=> [1, 1, 3, 5, 13]
+fibonacci.all? { |number| number < 20 } #=> true
+fibonacci.map { |number| number * 2 } #=> [0, 2, 2, 4, 6, 10, 16, 26]
+
+#? OpenStruct ----------------------------------------------------------------
+
+require 'ostruct'
+
+# person = OpenStruct.new(name: 'Burdette Lamar', city: 'Houston', state: 'TX')
+#* or
+person = OpenStruct.new
+person.name = 'John Smith'
+person.age = 70
+
+p person[:age] # => 70
+p person['address'] # => nil
+
+p person.hair_color = :gray
+p person[:eye_color] = :brown
+p person['hair_style'] = :ponytail
+p person.to_h #* get all attributes as a hash
+p person.to_h { |name, value| [name.to_s, value.to_s] }
+
+person.each_pair { |name, value| p [name, value] }
+
+enum = person.each_pair
+p enum
