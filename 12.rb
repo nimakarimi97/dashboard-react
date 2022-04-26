@@ -10,9 +10,11 @@ class SimpleCalculator
       raise ArgumentError.new('Please enter the inputs as a number.')
     end
 
+    first_operand = first_operand.to_f if first_operand.is_a? String
+    second_operand = second_operand.to_f if second_operand.is_a? String
+
     begin
-      "#{first_operand} #{operation} #{second_operand} = #{eval "#{first_operand}#{operation}#{second_operand}"}"
-      #* Also eval used to change the strings to numbers if the inputs were entered as strings
+      "#{first_operand} #{operation} #{second_operand} = #{first_operand.public_send(operation, second_operand)}"
     rescue ZeroDivisionError
       return 'Division by zero is not allowed.'
     rescue ArgumentError => e
@@ -33,4 +35,4 @@ puts SimpleCalculator.calculate(512, 4, '/')
 # puts SimpleCalculator.calculate(1, 2, '-')
 
 # puts SimpleCalculator.calculate(33, 0, '')
-puts SimpleCalculator.calculate(33, nil, '*')
+# puts SimpleCalculator.calculate(33, nil, '*')
