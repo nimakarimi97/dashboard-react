@@ -8,7 +8,7 @@ class Series
     i = 0
     output = []
     while i + num <= @input.size
-      output.push(@input[i...i + num])
+      output << @input[i...i + num]
       i += 1
     end
 
