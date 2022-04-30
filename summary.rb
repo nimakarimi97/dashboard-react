@@ -36,6 +36,13 @@ puts lucky_numbers
 
 puts [1, 2, 3].select(&:even?)
 
+a = [ 4, 5, 6 ]
+b = [ 7, 8, 9 ]
+[1, 2, 3].zip(a, b)   #=> [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+[1, 2].zip(a, b)      #=> [[1, 4, 7], [2, 5, 8]]
+
+[ "a", "b", "c" ] | [ "c", "d", "a" ]    #=> [ "a", "b", "c", "d" ]
+[ "c", "d", "a" ] | [ "a", "b", "c" ]    #=> [ "c", "d", "a", "b" ]
 #? strings ----------------------------------------------------------------
 location = 'World'
 # And double quotes when interpolated
@@ -70,6 +77,8 @@ puts my_string #=> "Hello"
 #? classes ----------------------------------------------------------------
 # Ruby Program of getter method
 class Website
+  attr_accessor :website # it's getter and setter at the same time
+
   # Constructor to initialize
   # the class with a name
   # instance variable
@@ -128,5 +137,26 @@ p person.to_h { |name, value| [name.to_s, value.to_s] }
 
 person.each_pair { |name, value| p [name, value] }
 
-enum = person.each_pair
-p enum
+#? .group_by ----------------------------------------------------------------
+[[1, 2, 3], [4, 5, 6, [7, 8]], 9, 10].flatten #=> [[1, 2, 3], [4, 5, 6, [7, 8]], 9, 10]
+
+#* #transform_values takes a hash and it operates on its values
+
+grades = {
+  'Pedro' => 60,
+  'Malik' => 59,
+  'Penny' => 88,
+  'Marissa' => 93,
+  'John' => 75,
+  'Juan' => 48,
+  'Amy' => 75,
+  'Sophia' => 35,
+  'Carmen' => 79,
+  'Mario' => 80,
+  'Giovanni' => 60
+}
+
+p grades.group_by { |name, grade| grade > 75 ? :passed : :failed }
+# whether if the grade is more than or equals to 75, or less than, then the item is assigned to the proper key.
+
+p %w[foo foo bar foo baz foo bar].tally #=> {"foo"=>4, "bar"=>2, "baz"=>1}
