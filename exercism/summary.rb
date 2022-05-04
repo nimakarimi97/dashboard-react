@@ -36,13 +36,22 @@ puts lucky_numbers
 
 puts [1, 2, 3].select(&:even?)
 
-a = [ 4, 5, 6 ]
-b = [ 7, 8, 9 ]
-[1, 2, 3].zip(a, b)   #=> [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
-[1, 2].zip(a, b)      #=> [[1, 4, 7], [2, 5, 8]]
+a = [4, 5, 6]
+b = [7, 8, 9]
+[1, 2, 3].zip(a, b) #=> [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+[1, 2].zip(a, b) #=> [[1, 4, 7], [2, 5, 8]]
 
-[ "a", "b", "c" ] | [ "c", "d", "a" ]    #=> [ "a", "b", "c", "d" ]
-[ "c", "d", "a" ] | [ "a", "b", "c" ]    #=> [ "c", "d", "a", "b" ]
+%w[a b c] | %w[c d a] #=> [ "a", "b", "c", "d" ]
+%w[c d a] | %w[a b c] #=> [ "c", "d", "a", "b" ]
+
+fibonacci = [0, 1, 1, 2, 3, 5, 8, 13]
+
+fibonacci.count { |number| number == 1 } #=> 2
+fibonacci.any? { |number| number == 6 } #=> false
+fibonacci.select { |number| number.odd? } #=> [1, 1, 3, 5, 13]
+fibonacci.all? { |number| number < 20 } #=> true
+fibonacci.map { |number| number * 2 } #=> [0, 2, 2, 4, 6, 10, 16, 26]
+
 #? strings ----------------------------------------------------------------
 location = 'World'
 # And double quotes when interpolated
@@ -106,16 +115,6 @@ puts g.website
 g.website = 'www.practice.geeksforgeeks.org'
 puts g.website
 
-#? Arrays ----------------------------------------------------------------
-
-fibonacci = [0, 1, 1, 2, 3, 5, 8, 13]
-
-fibonacci.count { |number| number == 1 } #=> 2
-fibonacci.any? { |number| number == 6 } #=> false
-fibonacci.select { |number| number.odd? } #=> [1, 1, 3, 5, 13]
-fibonacci.all? { |number| number < 20 } #=> true
-fibonacci.map { |number| number * 2 } #=> [0, 2, 2, 4, 6, 10, 16, 26]
-
 #? OpenStruct ----------------------------------------------------------------
 
 require 'ostruct'
@@ -153,7 +152,7 @@ grades = {
   'Sophia' => 35,
   'Carmen' => 79,
   'Mario' => 80,
-  'Giovanni' => 60
+  'Giovanni' => 60,
 }
 
 p grades.group_by { |name, grade| grade > 75 ? :passed : :failed }
