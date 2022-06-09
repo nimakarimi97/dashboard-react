@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   post 'sign_up', to: 'registrations#create'
 
   get 'dashboard', to: 'dashboard#index'
+
+  delete 'logout', to: 'sessions#destroy'
+
+  get 'sign_in', to: 'sessions#new'
+  post 'sign_in', to: 'sessions#create'
 end

@@ -1,0 +1,18 @@
+<h1 class="my-4 text-primary">Login</h1>
+
+<%= form_with url: sign_in_path, local: true, data: { turbo: false } do |form| %>
+    <div class="mb-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control", placeholder: "Enter your email address"%>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control", placeholder: "Enter your password"%>
+    </div>
+
+    <div class="mb-3">
+        <%= form.submit "Sign In", class:"btn btn-primary"%>
+    </div>
+    
+<% end %>
