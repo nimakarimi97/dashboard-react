@@ -1,0 +1,28 @@
+<%
+=begin%>
+ <% if Current.user %> 
+<%
+=end%>
+    <h1 class= "alert alert-secondary text-center text-primary mt-2">Dashboard</h1>
+    <%
+=begin%>
+ <% else %> 
+<%
+=end%>
+            <h6 class= "alert alert-warning mt-4">
+            You have to login to your account. <%= link_to "Click here", sign_up_path  %> to sign in.
+            </h6>
+<%
+=begin%>
+ <% end %> 
+<%
+=end%>
+
+<%
+=begin%>
+ <div class="d-flex align-items-center justify-content-center flex-column">
+
+<%= button_to "Connect Twitter", '/auth/twitter', class: "btn btn-primary"%>
+</div> 
+<%
+=end%>
