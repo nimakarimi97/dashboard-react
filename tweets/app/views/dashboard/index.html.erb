@@ -1,12 +1,10 @@
 <% if Current.user %>
     <h1 class= "alert alert-secondary text-center text-primary mt-2">Dashboard</h1>
+    <div class="d-flex align-items-center justify-content-center flex-column">
+        <%= button_to "Connect a Twitter account", "/auth/twitter/", method: :post, :data => { turbo: "false" }, class: "btn btn-primary"%>
+    </div>
     <% else %>
             <h6 class= "alert alert-warning mt-4">
             You have to login to your account. <%= link_to "Click here", sign_in_path  %> to sign in.
             </h6>
 <% end %>
-
-<div class="d-flex align-items-center justify-content-center flex-column">
-
-<%= button_to "Connect Twitter", '/auth/twitter', class: "btn btn-primary"%>
-</div>

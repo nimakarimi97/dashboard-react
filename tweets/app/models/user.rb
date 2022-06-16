@@ -7,6 +7,6 @@ class User < ApplicationRecord
   #   message: 'must be a valid email address',
   # }
 
-  #   has_many :twitter_accounts
+  has_many :twitter_accounts
   def new; end
 end
