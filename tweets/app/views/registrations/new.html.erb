@@ -1,7 +1,7 @@
 <h1 class="my-4 text-primary"> Sign Up </h1>
 
 <%= form_with model: @user, url: sign_up_path, local: true, data: { turbo: false }  do |form| %>
- <%= render "shared/form_errors", form: form %> 
+    <%= render "shared/form_errors", form: form %> 
 
     <div class="mb-3">
         <%= form.label :email %>

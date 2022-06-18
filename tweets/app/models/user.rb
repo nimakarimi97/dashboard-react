@@ -8,5 +8,6 @@ class User < ApplicationRecord
   # }
 
   has_many :twitter_accounts
+  has_many :tweets
   def new; end
 end

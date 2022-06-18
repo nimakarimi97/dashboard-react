@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h1> Tweets</h1>
+
+    <% if Current.user.twitter_accounts.any?  # check if any twitter account is connected %>
+        <%= button_to "Schedule a Tweet", new_tweet_path, method: :post, :data => { turbo: "false" }, class:"btn btn-outline-primary"%>
+    <% end %>
+    
+</div>
+
+
+<% if Current.user.twitter_accounts.none? %>
+    <%= link_to "Connect your Twitter Account", "/auth/twitter",method: :post, class: "btn btn-primary" %>
+<% end %>
+
+<% render @tweets #it will look for a partial file under the naem _tweet.html.erb for each tweet%>  

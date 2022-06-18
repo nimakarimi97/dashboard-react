@@ -1,7 +1,11 @@
 <% if Current.user %>
     <h1 class= "alert alert-secondary text-center text-primary mt-2">Dashboard</h1>
-    <div class="d-flex align-items-center justify-content-center flex-column">
+    <div class="d-flex align-items-center justify-content-around">
         <%= button_to "Connect a Twitter account", "/auth/twitter/", method: :post, :data => { turbo: "false" }, class: "btn btn-primary"%>
+        
+        <% if Current.user.twitter_accounts.any?  # check if any twitter account is connected %>
+            <%= button_to "Schedule a Tweet", new_tweet_path, method: :post, :data => { turbo: "false" }, class: "my-3 btn btn-outline-primary"%>
+        <% end %>
     </div>
     <% else %>
             <h6 class= "alert alert-warning mt-4">
