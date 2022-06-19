@@ -12,4 +12,5 @@
     <%= link_to "Connect your Twitter Account", "/auth/twitter",method: :post, class: "btn btn-primary" %>
 <% end %>
 
-<% render @tweets #it will look for a partial file under the naem _tweet.html.erb for each tweet%>  
+<%= render @tweets %>  
+<% #it will look for a partial file under the naem _tweet.html.erb for each tweet %>  

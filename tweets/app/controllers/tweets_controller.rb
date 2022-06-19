@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweets_path, notice: 'Tweet was scheduled successfully'
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
