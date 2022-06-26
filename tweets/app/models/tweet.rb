@@ -15,4 +15,10 @@ class Tweet < ApplicationRecord
     tweet = twitter_account.client.update(body)
     update(tweet_id: tweet.id)
   end
+
+  after_save_comit do
+    if publish_at_previously_changed?
+      TweetJob.set(wait_until: publish_at).perform_later(self)
+    end
+  end
 end
