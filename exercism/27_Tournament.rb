@@ -7,12 +7,12 @@ class Team
       .each do |match|
         firstOponent, secondOponent, result = match.split(';')
 
-        table[firstOponent] = { mp: 0, w: 0, d: 0, l: 0, p: 0 } if table[
-          firstOponent
-        ].nil?
-        table[secondOponent] = { mp: 0, w: 0, d: 0, l: 0, p: 0 } if table[
-          secondOponent
-        ].nil?
+        if table[firstOponent].nil?
+          table[firstOponent] = { mp: 0, w: 0, d: 0, l: 0, p: 0 }
+        end
+        if table[secondOponent].nil?
+          table[secondOponent] = { mp: 0, w: 0, d: 0, l: 0, p: 0 }
+        end
 
         table[firstOponent][:mp] += 1
         table[secondOponent][:mp] += 1

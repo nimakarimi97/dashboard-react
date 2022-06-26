@@ -6,7 +6,7 @@ class PhoneNumber
          number[3] == '0' or number[3] == '1'
       return nil
     end
-    p number
+    number
   end
 end
 
