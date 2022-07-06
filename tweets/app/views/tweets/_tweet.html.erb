@@ -7,6 +7,7 @@
         <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
         <% if tweet.published? %>
           <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+          </div>
         <% else %>
           Scheduled for <%= l tweet.publish_at, format: :long %>
           </div>

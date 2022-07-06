@@ -16,7 +16,7 @@ class Tweet < ApplicationRecord
     update(tweet_id: tweet.id)
   end
 
-  after_save_comit do
+  after_save_commit do
     if publish_at_previously_changed?
       TweetJob.set(wait_until: publish_at).perform_later(self)
     end
