@@ -90,6 +90,12 @@ GEM
     debug (1.5.0)
       irb (>= 1.3.6)
       reline (>= 0.2.7)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -124,6 +130,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -170,6 +179,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    orm_adapter (0.5.0)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -198,6 +208,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_live_reload (0.2.0)
+      listen
+      nio4r
+      railties
+      websocket-driver
     railties (7.0.3)
       actionpack (= 7.0.3)
       activesupport (= 7.0.3)
@@ -206,10 +221,16 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rb-fsevent (0.11.1)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
     redis (4.7.0)
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.2.1)
@@ -256,6 +277,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -281,6 +304,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  devise (~> 4.8, >= 4.8.1)
   importmap-rails
   jbuilder
   omniauth (~> 2.1)
@@ -288,6 +312,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)
+  rails_live_reload
   selenium-webdriver
   sidekiq (~> 6.5)
   sprockets-rails
