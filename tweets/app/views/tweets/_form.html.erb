@@ -1,9 +1,15 @@
 <%= form_with model: tweet, data: { turbo: false }, local: true do |form| %>
-  <%= render "shared/form_errors", form: form %>
+  <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+          <% form.object.errors.full_messages.each do |message| %>
+              <div> <%= message %> </div>
+          <% end %>
+      </div>
+  <% end %>
 
   <div class="mb-3">
     <%= form.label :twitter_account_id %>
-    <%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {}, { class: "form-control" } %>
+    <%= form.collection_select :twitter_account_id, current_user.twitter_accounts, :id, :username, {}, { class: "form-control" } %>
     <%= link_to "Connect another Twitter Account", "/auth/twitter" %>
   </div>
 

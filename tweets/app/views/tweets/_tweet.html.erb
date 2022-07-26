@@ -1,7 +1,12 @@
-<div class="mb-3 card card-body">
-  <%= tweet.body %>
-  <div class="me-3">
-    <div class="d-flex justify-content-between mt-2"">
+<div class="card my-3">
+  <div class="card-header">
+    <h6>
+      <%= tweet.body %>
+    </h6>
+  </div>
+
+  <div class="card-body me-3">
+    <div class="d-flex justify-content-between"">
       <div >
         <%= image_tag tweet.twitter_account.image, class: "rounded-circle me-1" %>
         <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>

@@ -1,9 +1,9 @@
 class TweetsController < ApplicationController
-  before_action :require_user_logged_in!
+  before_action :authenticate_user!
   before_action :set_tweet, only: %i[show edit update destroy]
 
   def index
-    @tweets = Current.user.tweets
+    @tweets = current_user.tweets
   end
 
   def new
@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Current.user.tweets.new(tweet_params)
+    @tweet = current_user.tweets.new(tweet_params)
     if @tweet.save
       redirect_to tweets_path, notice: 'Tweet was scheduled successfully'
     else
@@ -41,6 +41,6 @@ class TweetsController < ApplicationController
   end
 
   def set_tweet
-    @tweet = Current.user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
   end
 end

@@ -300,7 +300,6 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
   bootsnap
   capybara
   debug
@@ -308,11 +307,12 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   omniauth (~> 2.1)
-  omniauth-rails_csrf_protection
+  omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)
   rails_live_reload
+  redis (~> 4.0)
   selenium-webdriver
   sidekiq (~> 6.5)
   sprockets-rails

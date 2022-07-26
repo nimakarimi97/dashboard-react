@@ -1,8 +1,7 @@
 class OmniauthCallbacksController < ApplicationController
   def twitter
     twitter_account =
-      Current
-        .user
+      current_user
         .twitter_accounts
         .where(username: auth.info.nickname)
         .first_or_initialize
