@@ -3,7 +3,7 @@ class CreateTwitterAccounts < ActiveRecord::Migration[7.0]
     create_table :twitter_accounts do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.string :name
-      t.string :username
+      t.string :username, unique: true
       t.string :image
       t.string :token
       t.string :secret
