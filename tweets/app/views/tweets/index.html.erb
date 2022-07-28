@@ -9,9 +9,10 @@
     <%= link_to "Connect Your Twitter Account", "/auth/twitter",method: :post, class: "btn btn-primary" %>
 <% end %>
 
-<%= render @tweets %>  
-<% #it will look for a partial file under the naem _tweet.html.erb for each tweet %>  
 
 <% if current_user.tweets.any? %>
-    <%= render 'layouts/footer' %>
+    <%= render @tweets %>  
+    <% #it will look for a partial file under the naem _tweet.html.erb for each tweet %>  
+
+    <%== pagy_bootstrap_nav(@pagy) %>
 <% end %>

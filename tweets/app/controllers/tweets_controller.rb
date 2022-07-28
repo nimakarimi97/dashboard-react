@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[show edit update destroy]
 
   def index
-    @tweets = current_user.tweets
+    @pagy, @tweets = pagy(current_user.tweets.order(publish_at: :asc), items: 5)
   end
 
   def new
