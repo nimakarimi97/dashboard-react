@@ -12,13 +12,13 @@
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 # Pagy::DEFAULT[:page]   = 1                                  # default
-# Pagy::DEFAULT[:items]  = 20                                 # default
+Pagy::DEFAULT[:items] = 10 # default
 # Pagy::DEFAULT[:outset] = 0                                  # default
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
-Pagy::DEFAULT[:size] = [1, 1, 1, 1] # default
-# Pagy::DEFAULT[:page_param] = :page                           # default
+Pagy::DEFAULT[:size] = [1, 2, 2, 1] # default
+Pagy::DEFAULT[:page_param] = :page # default
 # The :params can be also set as a lambda e.g ->(params){ params.exclude('useless').merge!('custom' => 'useful') }
 # Pagy::DEFAULT[:params]     = {}                              # default
 # Pagy::DEFAULT[:fragment]   = '#fragment'                     # example
@@ -159,16 +159,16 @@ require 'pagy/extras/bootstrap'
 
 # Items extra: Allow the client to request a custom number of items per page with an optional selector UI
 # See https://ddnexus.github.io/pagy/extras/items
-# require 'pagy/extras/items'
+require 'pagy/extras/items'
 # set to false only if you want to make :items_extra an opt-in variable
 # Pagy::DEFAULT[:items_extra] = false    # default true
-# Pagy::DEFAULT[:items_param] = :items   # default
+Pagy::DEFAULT[:items_param] = :items # default
 # Pagy::DEFAULT[:max_items]   = 100      # default
 
 # Overflow extra: Allow for easy handling of overflowing pages
 # See https://ddnexus.github.io/pagy/extras/overflow
-# require 'pagy/extras/overflow'
-# Pagy::DEFAULT[:overflow] = :empty_page    # default  (other options: :last_page and :exception)
+require 'pagy/extras/overflow'
+Pagy::DEFAULT[:overflow] = :last_page # default  (other options: :last_page and :exception)
 
 # Support extra: Extra support for features like: incremental, infinite, auto-scroll pagination
 # See https://ddnexus.github.io/pagy/extras/support
