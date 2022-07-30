@@ -11,8 +11,17 @@
 
 
 <% if current_user.tweets.any? %>
-    <%= render @tweets %>  
-    <% #it will look for a partial file under the naem _tweet.html.erb for each tweet %>  
-
     <%== pagy_bootstrap_nav(@pagy) %>
+
+    <%= link_to_unless_current '5', tweets_path(items: 5), id: 'step_container', class:'btn btn-outline-primary'%>
+    <%= link_to_unless_current '10', tweets_path(items: 10), class:'btn btn-outline-primary'%>
+    <%= link_to_unless_current '50', tweets_path(items: 50), class:'btn btn-outline-primary'%>
+ 
+    <span class="ml-5">
+        sort by:
+        <%= link_to "time", :sort => :publish_at%>
+    </span>
+
+    <%= render @tweets %>   
+    <% #it will look for a partial file under the naem _tweet.html.erb for each tweet %>  
 <% end %>
