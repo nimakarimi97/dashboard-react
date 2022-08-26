@@ -1,3 +1,4 @@
+import { upArrow } from "@syncfusion/ej2-react-grids";
 import { itemClick } from "@syncfusion/ej2/treemap";
 import React, { createContext, useContext, useState } from "react";
 
@@ -16,7 +17,7 @@ export const ContextProvider = ({ children }) => {
 
   const handleClick = (itemClicked) => {
     setIsClicked((prev) => ({
-      ...prev,
+      ...initialState,
       [itemClicked]: !prev[itemClicked],
     }));
   };
