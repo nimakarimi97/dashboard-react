@@ -60,7 +60,6 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
-      Navbar is here
       <NavBtn
         title="Menu"
         customFunction={() => {
