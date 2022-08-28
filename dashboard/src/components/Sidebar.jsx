@@ -8,12 +8,13 @@ import { links } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } =
+    useStateContext();
 
   const activeLink =
-    "flex items-center gap-5 p-1 pl-6 rounded-lg text-white text-md m-2 bg-gray-400";
+    "flex items-center gap-5 p-1 pl-6 hover:py-1 rounded-lg text-white text-md m-2";
   const normalLink =
-    "flex items-center gap-5 pl-1 -pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2";
+    "flex items-center gap-5 pl-1 py-1 rounded-lg text-md m-2 text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray";
 
   const handleCloseSidebar = () => {
     if (activeMenu && screenSize <= 900) setActiveMenu(false);
@@ -35,7 +36,7 @@ const Sidebar = () => {
             <button
               type="button"
               onClick={handleCloseSidebar}
-              className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+              className="text-xl rounded-full p-2 hover:bg-light-gray mt-4 block md:hidden dark:text-white dark:hover:bg-slate-600"
             >
               <MdOutlineCancel />
             </button>
@@ -55,9 +56,13 @@ const Sidebar = () => {
                   isActive ? activeLink : normalLink
                 }
                 //* isActive is a state property of NavLink
+
+                style={({ isActive }) => ({
+                  backgroundColor: isActive ? currentColor : "",
+                })}
               >
                 {link.icon}
-                <span className="capitalize ">{link.name}</span>
+                <span className="capitalize">{link.name}</span>
               </NavLink>
             ))}
           </div>

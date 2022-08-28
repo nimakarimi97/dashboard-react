@@ -1,6 +1,6 @@
 import { upArrow } from "@syncfusion/ej2-react-grids";
 import { itemClick } from "@syncfusion/ej2/treemap";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const StateContext = createContext();
 
@@ -15,7 +15,25 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
-  const [settings, setSettings] = useState(true);
+
+  const [themeSettings, setThemeSettings] = useState(false);
+  const [currentMode, setCurrentMode] = useState("Dark");
+  const [currentColor, setCurrentColor] = useState("#1A97F5");
+  const [userData, setUserData] = useState({
+    id: 1,
+    name: "Nima",
+    email: "nimakarimi676@gmail.com",
+  });
+
+  const setMode = (e) => {
+    setCurrentMode(e.target.value);
+    setThemeSettings(false);
+  };
+
+  const setColor = (color) => {
+    setCurrentColor(color);
+    setThemeSettings(false);
+  };
 
   const handleClick = (itemClicked) => {
     setIsClicked((prev) => ({
@@ -34,8 +52,15 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         screenSize,
         setScreenSize,
-        settings,
-        setSettings,
+        themeSettings,
+        setThemeSettings,
+        currentColor,
+        setCurrentColor,
+        currentMode,
+        setCurrentMode,
+        setMode,
+        setColor,
+        userData,
       }}
     >
       {children}

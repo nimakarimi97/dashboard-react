@@ -1,4 +1,4 @@
-import React from "react";
+import React, { startTransition } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
@@ -8,7 +8,8 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { itemClick } from "@syncfusion/ej2/treemap";
 
 const ThemeSettings = () => {
-  const { settings, setSettings } = useStateContext();
+  const { setThemeSettings, setColor, setMode, currentColor, currentMode } =
+    useStateContext();
 
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
@@ -17,7 +18,7 @@ const ThemeSettings = () => {
           <p className="font-extrabold text-xl">Settings</p>
           <button
             type="button"
-            onClick={() => setSettings(false)}
+            onClick={() => setThemeSettings(false)}
             style={{ color: "rgb(153, 171, 180)", borderRadius: "50%" }}
             className="text-2xl m-3 p-1 hover:drop-shadow-xl hover:bg-light-gray"
           >
@@ -34,8 +35,8 @@ const ThemeSettings = () => {
               id="light"
               value="Light"
               name="theme"
-              onChange={() => {}}
-              checked={true}
+              onChange={setMode}
+              checked={currentMode === "Light"}
               className="cursor-pointer"
             />
             <label htmlFor="light" className="cursor-pointer ml-2 text-md">
@@ -49,8 +50,8 @@ const ThemeSettings = () => {
               id="dark"
               value="Dark"
               name="theme"
-              onChange={() => {}}
-              checked={false}
+              onChange={setMode}
+              checked={currentMode === "Dark"}
               className="cursor-pointer"
             />
             <label htmlFor="dark" className="cursor-pointer ml-2 text-md">
@@ -77,11 +78,11 @@ const ThemeSettings = () => {
                     type="button"
                     className="w-10 h-10 rounded-full"
                     style={{ backgroundColor: item.color }}
-                    onClick={() => {}}
+                    onClick={() => setColor(item.color)}
                   >
                     <BsCheck
                       className={`m-2 text-2xl text-white ${
-                        false ? "block" : "hidden"
+                        item.color === currentColor ? "block" : "hidden"
                       }`}
                     />
                   </button>

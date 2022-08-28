@@ -20,11 +20,12 @@ import product9 from "../data/product9.jpg";
 import { itemClick } from "@syncfusion/ej2/treemap";
 
 const Ecommerce = () => {
+  const { currentColor, currentMode } = useStateContext();
   return (
     <div className="mt-12">
       <div className="flex flex-wrap lg:flex-nowrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
-          <div className="flex justify-between items-center">
+        <div className="ml-6 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+          <div className="flex justify-between items-center dark:text-gray-800">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
               <p>€300,000</p>{" "}
@@ -33,7 +34,7 @@ const Ecommerce = () => {
           <div className="mt-6">
             <Button
               color="white"
-              bgColor="blue"
+              bgColor={currentColor}
               text="Get Started"
               size="md"
               borderRadius="10px"
@@ -43,20 +44,25 @@ const Ecommerce = () => {
 
         {/* //! cards */}
 
-        <div className="flex  m-3 flex-wrap justify-center gap-2 items-center">
+        <div className="flex m-3 flex-wrap justify-center gap-2 items-center dark:text-white">
           {earningData.map((item) => (
             <div
               key={item.title}
-              className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-4 pt-9 rounded-2xl md:w-56"
+              className="bg-white dark:text-gray-200 dark:bg-main-dark-bg p-4 pt-9 rounded-2xl md:w-56"
             >
               <button
                 type="button"
-                style={{ color: item.color, backgroundColor: item.iconBg }}
-                className="text-2xl opacity-70 rounded-full p-2 hover:opacity-100 hover:drop-shadow-xl"
+                style={{
+                  color: currentMode === "Light" ? item.color : "white",
+                  backgroundColor: currentMode === "Light" ? item.iconBg : "",
+                }}
+                className="text-2xl opacity-70 rounded-full p-2 hover:opacity-100 hover:drop-shadow-xl align-middle"
               >
                 {item.icon}
               </button>
-              <span className="ml-4 text-gray-400 ">{item.title}</span>
+              <span className="ml-4 text-gray-600 dark:text-slate-300">
+                {item.title}
+              </span>
               <p className="mt-3">
                 <span className="text-lg font-semibold">{item.amount}</span>
                 <span className={`text-${item.pcColor} ml-2`}>
@@ -71,11 +77,11 @@ const Ecommerce = () => {
       {/* revenue */}
 
       <div className="flex gap-10 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780">
+        <div className="bg-white dark:text-gray-200 dark:bg-main-dark-bg m-3 p-4 rounded-2xl md:w-780">
           <div className="flex justify-between">
             <p className="font-semibold text-xl">Revenue Updates</p>
             <div className="flex items-center gap-4">
-              <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-2xl">
+              <p className="flex items-center gap-2 text-gray-600 dark:text-slate-100 hover:drop-shadow-2xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
@@ -99,30 +105,32 @@ const Ecommerce = () => {
                     23%
                   </span>
                 </p>
-                <p className="text-gray-500 mt-1">Budget</p>
+                <p className="text-gray-500 dark:text-slate-100 mt-1">Budget</p>
               </div>
               <div className="mt-8">
                 <p>
                   <span className="text-xl font-semibold">€43,000</span>
                 </p>
-                <p className="text-gray-500 mt-1">Expense</p>
+                <p className="text-gray-500 dark:text-slate-100 mt-1">
+                  Expense
+                </p>
               </div>
               <div className="mt-5">
                 <SparkLine
                   className="mt-10"
-                  currentColor="blue"
+                  currentColor={currentColor}
                   id="line-sparkline"
                   type="Line"
                   height="80px"
                   width="250px"
                   data={SparklineAreaData}
-                  color="blue"
+                  color={currentColor}
                 />
               </div>
               <div className="mt-8">
                 <Button
                   color="white"
-                  bgColor="blue"
+                  bgColor={currentColor}
                   text="Download Report"
                   size="md"
                   borderRadius="10px"

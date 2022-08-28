@@ -20,7 +20,7 @@ const NavBtn = ({ title, customFunction, icon, color, dotColor }) => (
       type="button"
       onClick={() => customFunction()}
       style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+      className="relative text-xl rounded-full p-3 hover:bg-gray-100 dark:hover:bg-gray-700 "
     >
       <span
         style={{ background: dotColor }}
@@ -42,6 +42,8 @@ const Navbar = () => {
     handleClick,
     screenSize,
     setScreenSize,
+    currentColor,
+    userData,
   } = useStateContext();
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const Navbar = () => {
         customFunction={() => {
           setActiveMenu((prevActiveMenu) => !prevActiveMenu);
         }}
-        color="blue"
+        color={currentColor}
         icon={<AiOutlineMenu />}
         dotColor="red"
       />
@@ -73,7 +75,7 @@ const Navbar = () => {
         <NavBtn
           title="Cart"
           customFunction={() => handleClick("cart")}
-          color="blue"
+          color={currentColor}
           icon={<FiShoppingCart />}
           dotColor="green"
         />
@@ -81,7 +83,7 @@ const Navbar = () => {
         <NavBtn
           title="Chat"
           customFunction={() => handleClick("chat")}
-          color="blue"
+          color={currentColor}
           icon={<BsChatLeft />}
           dotColor="red"
         />
@@ -89,20 +91,20 @@ const Navbar = () => {
         <NavBtn
           title="Notification"
           customFunction={() => handleClick("notification")}
-          color="blue"
+          color={currentColor}
           icon={<RiNotification3Line />}
           dotColor="red"
         />
 
-        <TooltipComponent content="profile" position="BottomCenter">
+        <TooltipComponent content="Profile" position="BottomCenter">
           <div
             onClick={() => handleClick("userProfile")}
-            className="flex item-center gap-2 p-2 cursor-pointer rounded-full hover:bg-gray-200"
+            className="flex item-center gap-2 p-2 cursor-pointer rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <img src={myAvatar} className="rounded-full w-8 h-8" />
-            <p className="text-gray-500 text-14">
+            <p className="text-gray-500 text-14 dark:text-gray-200 my-auto">
               <span>Hi, </span>
-              <span className="font-bold">Nima</span>
+              <span className="font-bold">{userData.name}</span>
             </p>
             <MdKeyboardArrowDown className="text-gray-500 text-14" />
           </div>
