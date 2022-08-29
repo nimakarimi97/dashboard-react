@@ -42,7 +42,6 @@ export const ContextProvider = ({ children }) => {
       mode: window.localStorage.getItem("localMode"),
       color: window.localStorage.getItem("localColor"),
     };
-    console.log(localData);
 
     if (localData.color) setCurrentColor(localData.color);
     if (localData.mode) setCurrentMode(localData.mode);

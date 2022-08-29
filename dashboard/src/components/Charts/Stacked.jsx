@@ -32,7 +32,7 @@ const Stacked = ({ width, height }) => {
       background={currentMode === "Dark" ? "rgba(1, 24, 38 ,0.2)" : "#fff"}
       legendSettings={{
         background:
-          currentMode === "Dark" ? "rgba(170, 172, 173, 0.7)" : "#fff",
+          currentMode === "Dark" ? "rgba(170, 172, 173, 0.9)" : "#fff",
       }}
     >
       <Inject services={[StackingColumnSeries, Category, Legend, Tooltip]} />
