@@ -22,6 +22,7 @@ export const ContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({
     id: 1,
     name: "Nima",
+    lastName: "Karimi",
     email: "nimakarimi676@gmail.com",
   });
 
