@@ -14,7 +14,14 @@ import { Arrow } from "@syncfusion/ej2/maps";
 import { userProfileData } from "../data/dummy";
 import ColorMapping from "../pages/Charts/ColorMapping";
 
-const NavBtn = ({ title, customFunction, icon, color, dotColor }) => (
+const NavBtn = ({
+  title,
+  customFunction,
+  icon,
+  color,
+  dotColor,
+  isClicked,
+}) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
@@ -23,7 +30,11 @@ const NavBtn = ({ title, customFunction, icon, color, dotColor }) => (
       className="relative text-xl rounded-full p-3 hover:bg-gray-100 dark:hover:bg-gray-700 "
     >
       <span
-        style={{ background: dotColor }}
+        style={{
+          background: dotColor,
+          display:
+            title === "Notification" && isClicked.notification ? "none" : "",
+        }}
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
       >
         {/* this is for the dot above the icon */}
@@ -45,7 +56,7 @@ const Navbar = () => {
     currentColor,
     userData,
   } = useStateContext();
-
+  // console.log(isClicked);
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -94,6 +105,7 @@ const Navbar = () => {
           color={currentColor}
           icon={<RiNotification3Line />}
           dotColor="red"
+          isClicked={isClicked}
         />
 
         <TooltipComponent content="Profile" position="BottomCenter">
