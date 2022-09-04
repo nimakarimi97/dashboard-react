@@ -66,10 +66,7 @@ const App = () => {
               activeMenu ? "md:ml-72" : "flex-2"
             }`}
           >
-            <div
-              className="fixed md:static bg-main-bg dark:bg-secon
-            dary-dark-bg dark:text-white navbar w-full"
-            >
+            <div className="fixed md:static bg-main-bg dark:bg-secondary-dark-bg dark:text-white navbar w-full">
               <Navbar />
             </div>
             <div>
