@@ -6,7 +6,7 @@ import { chatData } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const Chat = () => {
-  const { currentColor } = useStateContext();
+  const { currentColor, handleClick } = useStateContext();
 
   return (
     <div className="absolute top-20 right-10 md:right-52 bg-white dark:bg-main-dark-bg drop-shadow-2xl shadow-inner shadow-gray-300 dark:shadow-gray-600 z-10 h-auto w-96 p-7 px-9 rounded-3xl">
@@ -20,13 +20,13 @@ const Chat = () => {
             5 New
           </button>
         </div>
-        <Button
-          icon={<MdOutlineCancel />}
-          color="rgb(153, 171, 180)"
-          bgHoverColor="light-gray"
-          size="2xl"
-          borderRadius="50%"
-        />
+        <button
+          type="button"
+          onClick={() => handleClick("chat")}
+          className="text-xl rounded-full p-2 hover:bg-light-gray dark:text-white dark:hover:bg-slate-600"
+        >
+          <MdOutlineCancel />
+        </button>
       </div>
       <div className="mt-5 ">
         {chatData?.map((item, index) => (

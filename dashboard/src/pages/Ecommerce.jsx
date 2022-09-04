@@ -23,8 +23,9 @@ const Ecommerce = () => {
   const { currentColor, currentMode } = useStateContext();
   return (
     <div className="mt-12">
-      <div className="flex flex-wrap lg:flex-nowrap justify-center">
-        <div className="ml-6 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+      {/* Overview */}
+      <div className="flex flex-wrap lg:flex-nowrap justify-center p-5 pl-9">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full md:w-800 2xl:w-400 p-8 pt-9 my-4 md:m-3 md:mx-6 bg-hero-pattern bg-no-repeat bg-cover bg-center shadow">
           <div className="flex justify-between items-center dark:text-gray-800">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
@@ -44,11 +45,11 @@ const Ecommerce = () => {
 
         {/* //! cards */}
 
-        <div className="flex m-3 flex-wrap justify-center gap-2 items-center dark:text-white">
+        <div className="flex lg:m-0 flex-wrap justify-center gap-4 items-center dark:text-white">
           {earningData.map((item) => (
             <div
               key={item.title}
-              className="bg-white dark:text-gray-200 dark:bg-main-dark-bg p-4 pt-9 rounded-2xl md:w-56"
+              className="bg-white dark:text-gray-200 dark:bg-main-dark-bg p-4 md:p-4 xmd:pt-9 rounded-2xl w-44 md:w-52 shadow"
             >
               <button
                 type="button"
@@ -77,7 +78,7 @@ const Ecommerce = () => {
       {/* revenue */}
 
       <div className="flex gap-10 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-main-dark-bg m-3 p-4 rounded-2xl md:w-780">
+        <div className="bg-white dark:text-gray-200 dark:bg-main-dark-bg m-3 p-4 rounded-2xl md:w-780 shadow">
           <div className="flex justify-between">
             <p className="font-semibold text-xl">Revenue Updates</p>
             <div className="flex items-center gap-4">

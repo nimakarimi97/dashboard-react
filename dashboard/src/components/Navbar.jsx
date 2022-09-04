@@ -27,7 +27,7 @@ const NavBtn = ({
       type="button"
       onClick={() => customFunction()}
       style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-gray-100 dark:hover:bg-gray-700 "
+      className="relative text-xl rounded-full p-3 hover:bg-gray-100 dark:hover:bg-gray-700"
     >
       <span
         style={{
@@ -56,7 +56,7 @@ const Navbar = () => {
     currentColor,
     userData,
   } = useStateContext();
-  // console.log(isClicked);
+
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -80,7 +80,7 @@ const Navbar = () => {
         }}
         color={currentColor}
         icon={<AiOutlineMenu />}
-        dotColor="red"
+        dotColor=""
       />
       <div className="flex">
         <NavBtn

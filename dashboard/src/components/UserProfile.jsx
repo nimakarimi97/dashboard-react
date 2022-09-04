@@ -56,7 +56,7 @@ const UserProfile = () => {
         <button
           type="button"
           className="rounded-xl p-3 hover:bg-fwhite mt-5 hover:drop-shadow-xl hover:bg-light-gray w-full text-white"
-          onClick={""}
+          onClick={() => {}}
           style={{ background: currentColor }}
         >
           Logout
